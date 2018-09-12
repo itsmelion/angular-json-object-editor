@@ -1,0 +1,30 @@
+{
+  "name": "angularjs-json-object-editor",
+  "version": "0.1.0",
+  "description": "Module to edit Javascript Objects (AngularJS/ Angular 1)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsmelion/angularjs-json-object-editor.git"
+  },
+  "keywords": [
+    "angularjs",
+    "angular",
+    "ng",
+    "ng1",
+    "object",
+    "editor",
+    "json",
+    "js",
+    "editable"
+  ],
+  "peerDependencies": {
+    "angular": "^1.7.4"
+  },
+  "author": "Christhopher Lion <christhopherleao@icloud.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsmelion/angularjs-json-object-editor/issues"
+  },
+  "homepage": "https://github.com/itsmelion/angularjs-json-object-editor#readme"
+}
