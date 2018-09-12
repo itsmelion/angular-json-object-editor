@@ -214,9 +214,9 @@ propDirective.$inject = ['$compile'];
 export const moduleName = 'objectEditor';
 export const directiveName = 'objectEditor';
 
-export default angular
+angular
   .module(moduleName, [])
-  .directive(objectEditor, () => ({
+  .directive(directiveName, () => ({
     restrict: 'E',
     replace: true,
     scope: {

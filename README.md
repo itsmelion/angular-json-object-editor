@@ -16,7 +16,7 @@ Include styles (in your sass file)
 ```
 (or on your .js file)
 ```js
-import 'angularjs-json-object-editor.scss';
+import 'angularjs-json-object-editor/index.scss';
 ```
 
 Add to the dependencies of your angular app
