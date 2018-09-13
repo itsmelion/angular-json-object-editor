@@ -5,14 +5,14 @@ $primitive: #c678dd;
 $editor-background: #282c34;
 
 .object-editor {
+  margin: 0;
+  padding: 1em 0;
+  color: rgba(255, 255, 255, .8);
+  background-color: $editor-background;
   list-style: none;
   vertical-align: middle;
   user-select: none;
-  background-color: $editor-background;
-  padding: 1em 0;
-  color: rgba(255, 255, 255, .8);
   text-align: left;
-  margin: 0;
 }
 
 
@@ -139,10 +139,10 @@ ul.object-editor .collapsed ul {
 ul.object-editor .type input {
   display: none;
   padding: 0;
-  border-width: 1px;
-  background-color: transparent;
   color: currentColor;
   border: 0;
+  background-color: transparent;
+  border-width: 1px;
 }
 
 ul.object-editor .type.editing input {
@@ -167,8 +167,8 @@ ul.object-editor {
   }
 
   .textValue {
-    font-weight: normal;
     display: inline-block;
+    font-weight: normal;
   }
 }
 

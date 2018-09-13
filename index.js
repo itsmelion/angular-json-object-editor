@@ -57,8 +57,7 @@ const propDirective = $compile => ({
         if (type === 'object') {
           if (scope.isArray) scope.start = '[';
           else scope.start = '{';
-        }
-        else if (type === 'function') {
+        } else if (type === 'function') {
           scope.start = 'function () {...}';
         } else if (type === 'string') {
           scope.prefix = '"';
@@ -70,8 +69,7 @@ const propDirective = $compile => ({
           scope.inputType = 'checkbox';
         }
 
-        scope.showInput = () => scope.isPrimitive
-          && (scope.editing || scope.inputType === 'checkbox');
+        scope.showInput = () => scope.isPrimitive && (scope.editing || scope.inputType === 'checkbox');
 
         typeElement = angular.element(element[0].querySelector('.type'));
         typeElement[0].innerHTML = 0;
@@ -86,17 +84,26 @@ const propDirective = $compile => ({
           `;
         }
 
-        actionButtonHtml =
-          type === 'function'
-            ? `<button type="button" class="run" title="run">Run</button>
-              <button type="button" class="runWithParams" title="runWithParams">Run with arguments</button>`
-            : `
-              <button type="button" class="duplicate" title="Duplicate">Duplicate</button>
-              <button type="button" name="delete" class="delete" title="Delete"></button>
-            `;
+        actionButtonHtml = type === 'function'
+          ? `
+            <button type="button" class="run" title="run">Run</button>
+            <button type="button" class="runWithParams" title="runWithParams">
+              Run with arguments
+            </button>
+          `
+          : `
+            <button type="button" class="duplicate" title="Duplicate">Duplicate</button>
+            <button type="button" name="delete" class="delete" title="Delete"></button>
+          `;
 
         typeElement.html(
-          `<div row nowrap>{{prefix}}${inputHTML}<span class='textValue'>{{parent[name]}}</span>{{suffix}}</span>${actionButtonHtml}</div>`
+          `<div row nowrap>
+            <i>{{prefix}}</i>
+            ${inputHTML}
+            <span class='textValue'>{{parent[name]}}</span>
+            <i>{{suffix}}</i>
+            ${actionButtonHtml}
+          </div>`
         );
 
         $compile(typeElement.contents())(scope);
@@ -105,17 +112,25 @@ const propDirective = $compile => ({
         element.find('input').unbind('blur');
 
         if (type === 'string' || type === 'number') {
-          angular.element(element[0].querySelector('span.textValue')).bind('click', () => {
-            scope.editing = true;
-            scope.editingClass = 'editing';
-            scope.$apply();
-          });
+          angular.element(element[0].querySelector('span.textValue'))
+            .bind('click', () => {
+              scope.editing = true;
+              scope.editingClass = 'editing';
+              scope.$apply();
+            });
 
-          element.find('input').bind('blur', () => {
-            scope.editingClass = '';
-            scope.editing = false;
-            scope.$apply();
-          });
+          element
+            .find('input')
+            .bind('blur', (e) => {
+              e.srcElement.focus();
+              scope.editingClass = '';
+              scope.editing = false;
+              scope.$apply();
+            })
+            .bind('submit', e => e.preventDefault())
+            .bind('keydown', (e) => {
+              if (e.key === 'Enter') e.preventDefault();
+            });
         }
 
         angular.element(element[0].querySelector('.duplicate')).bind('click', () => {
@@ -152,7 +167,8 @@ const propDirective = $compile => ({
           $compile(editorHTML)(scope, (cloned, scope) => {
             element.append(cloned);
             element.append(
-              angular.element('<span/>')
+              angular
+                .element('<span/>')
                 .addClass('end')
                 .addClass(type)
                 .text(isArray ? ']' : '}')
@@ -179,7 +195,7 @@ const propDirective = $compile => ({
         .eq(0)
         .bind('dblclick', expandCollapse);
 
-      scope.$watch('editing', isEditing => {
+      scope.$watch('editing', (isEditing) => {
         if (isEditing) {
           setTimeout(() => {
             element.find('input')[0].focus();
@@ -198,7 +214,7 @@ const propDirective = $compile => ({
         scope.$parent.objectChange();
       });
 
-      scope.$watch('parent[name]', newVal => {
+      scope.$watch('parent[name]', (newVal) => {
         const newType = typeof newVal;
 
         const newIsArray = angular.isArray(newVal);
@@ -250,34 +266,39 @@ angular
           $menu = angular.element('<ul/>').attr('id', 'objecteditor-types-menu');
           $menu
             .append(
-              angular.element('<li/>')
+              angular
+                .element('<li/>')
                 .data('type', 'object')
                 .text('Object')
             )
             .append(
-              angular.element('<li/>')
+              angular
+                .element('<li/>')
                 .data('type', 'array')
                 .text('Array')
             )
             .append(
-              angular.element('<li/>')
+              angular
+                .element('<li/>')
                 .data('type', 'string')
                 .text('String')
             )
             .append(
-              angular.element('<li/>')
+              angular
+                .element('<li/>')
                 .data('type', 'number')
                 .text('Number')
             )
             .append(
-              angular.element('<li/>')
+              angular
+                .element('<li/>')
                 .data('type', 'boolean')
                 .text('Boolean')
             );
 
           angular.element(document.body).append($menu);
 
-          $menu.on('click', e => {
+          $menu.on('click', (e) => {
             let val;
 
             const type = angular.element(e.target).data('type');
@@ -294,7 +315,7 @@ angular
           });
         }
 
-        angular.element(element[0].querySelector('.add')).on('click', function() {
+        angular.element(element[0].querySelector('.add')).on('click', function () {
           const $addButton = angular.element(this);
 
           // show the menu
