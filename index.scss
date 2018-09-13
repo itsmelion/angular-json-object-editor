@@ -42,19 +42,21 @@ ul.object-editor button.delete,
 ul.object-editor button.add,
 ul.object-editor button.duplicate,
 ul.object-editor button.expandCollapse {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   background-repeat: no-repeat;
-  font-size: 10px;
+  font-size: .7rem;
 }
 
-ul.object-editor button.delete,
-ul.object-editor button.duplicate {
-  visibility: hidden;
+.object-editor li {
+  .duplicate, .delete { visibility: hidden; }
+
+  &:hover {
+    .duplicate, .delete { visibility: visible; }
+  }
 }
 
-ul.object-editor li:hover > button,
-ul.object-editor:hover > li > button.add {
+ul.object-editor:hover > li > .add {
   visibility: visible;
 }
 
@@ -78,20 +80,18 @@ ul.object-editor button.delete {
 
 ul.object-editor button.add {
   width: auto;
-  height: 18px;
-  margin-left: 30px;
+  height: 1em;
+  margin-left: 2em;
   padding: 1px 10px 1px 20px;
   color: currentColor;
-  border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.04);
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAABCJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjE8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjU8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjcyPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjE2PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xNjwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8cmRmOkJhZy8+CiAgICAgICAgIDwvZGM6c3ViamVjdD4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTQ6MDg6MTUgMjI6MDg6MTA8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPlBpeGVsbWF0b3IgMy4yPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoqgMGxAAAA8klEQVQ4EaVTKxICMQx9hbUMR+AEOAQKAViGO+A5zXrugAcEagWOE3CEHSxMaRrSpsvAbJeapkle8vIp8OcxH/g9Bhhi6/RTGEy83eLi7go1Sqxx15g0wBFz9LFzwJF2CrLFDU9ssMBJdDEAgQscnCHqxCu9LR5YShB2ZtrXZmY7sx5qzo2YxKTGmMrpeQ+q+RvtNDu/yJf7BA5ADcs/HlN4nHTbPYS2jqd1oZw3Rhho/yyZGdCcDVaEDBmcLJm1LkTn3Qg9qIKhveAxXAJtGI2m7eExluQeB9xxkWITaT1pw34xIZvawpSB0M/8TALrfL8ADMFGq64HOtYAAAAASUVORK5CYII=);
 }
 
 ul.object-editor button.duplicate {
   width: 70px;
-  margin-left: 12px;
+  margin-left: 1em;
   padding: 1px 10px 1px 20px;
-  border-radius: 3px;
   background-color: rgba(0, 0, 0, 0.04);
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAABCJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjE8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjU8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjcyPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjE2PC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xNjwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDxkYzpzdWJqZWN0PgogICAgICAgICAgICA8cmRmOkJhZy8+CiAgICAgICAgIDwvZGM6c3ViamVjdD4KICAgICAgICAgPHhtcDpNb2RpZnlEYXRlPjIwMTQ6MDg6MTUgMjI6MDg6NTY8L3htcDpNb2RpZnlEYXRlPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29sPlBpeGVsbWF0b3IgMy4yPC94bXA6Q3JlYXRvclRvb2w+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgrv6qAEAAABBElEQVQ4EWNgGGjAiMsBLkELrjMwMmqgyP/7G8DI/v/07hXJz2DiTDAGBg3UvHtNHAMMS0nwMgANlBMT4H/gFjFPFqYetwEwFVCakZGR4d9/hh8vX34p//eL0RYmzQJjYHPysVOPGNRVRRiEBbkYwgO0GbbvvTOL4f9/huu334C0LYPpBdMuwQv/I4O47HX/12+99h9Ev3rzBVnqP0gtTDNOL4CczMrKzODnrs5w+dpLmHoMGu4FdBmokxlgTnayVUJXAubjNMDTWZUBhEHANWQRmMZG4PQCNsXYxHC6AF0xiiv+/78BkyfagD1r47GmWip6AegsoDNR0z7MnUhOhglRjQYAhqlrkfq/jTwAAAAASUVORK5CYII=);
   overflow: hidden;
@@ -142,7 +142,6 @@ ul.object-editor .type input {
   color: currentColor;
   border: 0;
   background-color: transparent;
-  border-width: 1px;
 }
 
 ul.object-editor .type.editing input {
@@ -176,8 +175,7 @@ ul.object-editor .type.number .textValue,
 ul.object-editor input[type='number'],
 ul.object-editor .type.string .textValue,
 ul.object-editor input[type='text'] {
-  min-width: 40px;
-  min-height: 12px;
+  min-height: 1em;
   cursor: text;
 }
 
@@ -195,20 +193,22 @@ ul.object-editor .end {
 #objecteditor-types-menu {
   display: none;
   position: absolute;
-  width: 100px;
+  min-width: 100px;
+  max-width: 80%;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, .8);
+  border: 1px solid #bbbbcc;
   background: white;
   list-style: none;
-}
 
-#objecteditor-types-menu li {
-  margin: 0;
-  padding: 5px;
-  cursor: default;
-}
+  li {
+    margin: 0;
+    padding: .8em .4em;
+    font-weight: bold;
+    cursor: pointer;
 
-#objecteditor-types-menu li:hover {
-  background: rgba(255, 255, 255, 1);
+    &:hover {
+      background: rgba(0, 0, 0, .1);
+    }
+  }
 }
