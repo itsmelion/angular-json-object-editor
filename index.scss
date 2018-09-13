@@ -1,16 +1,23 @@
+// Theme
+$keys: #66d9ef;
+$string: #f1fa8c;
+$primitive: #c678dd;
+$editor-background: #282c34;
+
 .object-editor {
   list-style: none;
   vertical-align: middle;
   user-select: none;
-  background-color: #282c34;
+  background-color: $editor-background;
   padding: 1em 0;
+  color: rgba(255, 255, 255, .8);
+  text-align: left;
+  margin: 0;
 }
 
-ul.object-editor,
-ul.object-editor li {
-  margin: 0;
-  padding: 0;
-  text-align: left;
+
+ul.object-editor li ul {
+  padding-left: 1em;
 }
 
 ul.object-editor,
@@ -46,27 +53,21 @@ ul.object-editor button.duplicate {
   visibility: hidden;
 }
 
-ul.object-editor button.add
-{ opacity: 0; }
-
 ul.object-editor li:hover > button,
-ul.object-editor li:hover > span > button.duplicate,
 ul.object-editor:hover > li > button.add {
-  opacity: 1;
   visibility: visible;
 }
 
 ul.object-editor ul:hover {
   background-color: rgba(0, 0, 0, 0.02);
-  transition: background 0.55s linear 1s;
+  transition: background-color 0.3s;
 }
 
 ul.object-editor label {
   margin: 0;
   padding: 0;
   padding-left: 2px;
-  color: #56b6c2;
-  overflow: hidden;
+  color: $keys;
   text-align: right;
   font-weight: bold;
 }
@@ -113,13 +114,11 @@ ul.object-editor .boolean button.expandCollapse {
   visibility: hidden;
 }
 
-ul.object-editor .type.string {
-  color: #e5c07b;
-}
+ul.object-editor .type.string { color: $string; }
 
 ul.object-editor .type.number,
-.type.boolean {
-  color: #c678dd;
+ul.object-editor .type.boolean {
+  color: $primitive;
 }
 
 ul.object-editor .type.array .textValue,
@@ -199,7 +198,7 @@ ul.object-editor .end {
   width: 100px;
   margin: 0;
   padding: 0;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, .8);
   background: white;
   list-style: none;
 }
@@ -211,5 +210,5 @@ ul.object-editor .end {
 }
 
 #objecteditor-types-menu li:hover {
-  background: #eee;
+  background: rgba(255, 255, 255, 1);
 }
