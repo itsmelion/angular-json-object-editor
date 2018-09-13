@@ -1,6 +1,6 @@
 {
   "name": "angularjs-json-object-editor",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Module to edit Javascript Objects (AngularJS/ Angular 1)",
   "main": "index.js",
   "repository": {
