@@ -6,9 +6,8 @@ const propDirective = $compile => ({
     parent: '=',
   },
   template: `
-  <li class='{{type}} {{expanedCollapsed}}'>
-    <button name='delete' class='delete' title='Delete'></button>
-    <button class='expandCollapse'></button>
+  <li class="{{type}} {{expanedCollapsed}}">
+    <button type="button" class="expandCollapse"></button>
     <label>{{name}}:</label>
     {{start}}
     <span class='type {{type}} {{editingClass}}'></span>
@@ -37,9 +36,7 @@ const propDirective = $compile => ({
         inputHTML = '';
         isArray = angular.isArray(value);
 
-        if (value === null) {
-          type = 'null';
-        }
+        if (value === null) type = 'null';
 
         scope.expanedCollapsed = 'expanded';
         scope.isContainer = type === 'object';
@@ -58,12 +55,10 @@ const propDirective = $compile => ({
         scope.start = '';
 
         if (type === 'object') {
-          if (scope.isArray) {
-            scope.start = '[';
-          } else {
-            scope.start = '{';
-          }
-        } else if (type === 'function') {
+          if (scope.isArray) scope.start = '[';
+          else scope.start = '{';
+        }
+        else if (type === 'function') {
           scope.start = 'function () {...}';
         } else if (type === 'string') {
           scope.prefix = '"';
@@ -75,26 +70,33 @@ const propDirective = $compile => ({
           scope.inputType = 'checkbox';
         }
 
-        scope.showInput = () => {
-          return scope.isPrimitive && (scope.editing || scope.inputType === 'checkbox');
-        };
+        scope.showInput = () => scope.isPrimitive
+          && (scope.editing || scope.inputType === 'checkbox');
 
         typeElement = angular.element(element[0].querySelector('.type'));
         typeElement[0].innerHTML = 0;
 
         if (scope.isPrimitive) {
-          inputHTML = `<input type='${
-            scope.inputType
-          }' data-ng-model='parent[name]' ng-switch-case='isBoolean'>`;
+          inputHTML = `
+            <input flex
+              type="${scope.inputType}"
+              data-ng-model="parent[name]"
+              ng-switch-case="isBoolean"
+            />
+          `;
         }
 
         actionButtonHtml =
           type === 'function'
-            ? "<button class='run' title='run'>Run</button> <button class='runWithParams' title='runWithParams'>Run with arguments</button> "
-            : "<button class='duplicate' title='Duplicate'>Duplicate</button>";
+            ? `<button type="button" class="run" title="run">Run</button>
+              <button type="button" class="runWithParams" title="runWithParams">Run with arguments</button>`
+            : `
+              <button type="button" class="duplicate" title="Duplicate">Duplicate</button>
+              <button type="button" name="delete" class="delete" title="Delete"></button>
+            `;
 
         typeElement.html(
-          `{{prefix}}${inputHTML}<span class='textValue'>{{parent[name]}}</span>{{suffix}}</span>${actionButtonHtml}`
+          `<div row nowrap>{{prefix}}${inputHTML}<span class='textValue'>{{parent[name]}}</span>{{suffix}}</span>${actionButtonHtml}</div>`
         );
 
         $compile(typeElement.contents())(scope);
@@ -222,11 +224,12 @@ angular
     scope: {
       object: '=',
     },
-    template:
-      '<ul class="object-editor">' +
-      "<property ng-repeat='key in keys' name='key' parent='object'></property>" +
-      "<li data-ng-show='exists' class='addSection'><button class='add'>Add {{addSubject}}</button></li>" +
-      '</ul>',
+    template: `<ul class="object-editor">
+      <property ng-repeat="key in keys" name="key" parent="object"></property>
+      <li data-ng-show="exists" class="addSection">
+        <button type="button" class="add">Add {{addSubject}}</button>
+      </li>
+    </ul>`,
     link: {
       pre(scope, element) {
         scope.exists = typeof scope.object === 'object';
