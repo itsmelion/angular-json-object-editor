@@ -92,7 +92,7 @@ const propDirective = $compile => ({
             </button>
           `
           : `
-            <button type="button" class="duplicate" title="Duplicate">Duplicate</button>
+            <button type="button" class="duplicate" title="Duplicate"></button>
             <button type="button" name="delete" class="delete" title="Delete"></button>
           `;
 

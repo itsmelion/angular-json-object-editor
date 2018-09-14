@@ -7,7 +7,7 @@ Module to edit Javascript Objects (AngularJS/ Angular 1)
 ### Usage
 Include in your project
 ```js
-import objectEditor from 'angularjs-json-object-editor';
+import { moduleName as objectEditor } from 'angularjs-json-object-editor';
 ```
 
 Include styles (in your sass file)
@@ -21,7 +21,7 @@ import 'angularjs-json-object-editor/index.scss';
 
 Add to the dependencies of your angular app
 ```js
-angular.module('myApp', ['objectEditor']);
+angular.module('myApp', [objectEditor]);
 ```
 
 Use your directive
